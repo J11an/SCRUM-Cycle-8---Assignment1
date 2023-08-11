@@ -8,11 +8,7 @@ This file contains the routes for your application.
 from app import app
 from flask import render_template, request, redirect, url_for
 
-
-###
-# Routing for your application.
-###
-
+#Fixed product list to populate the website.
 products = [
     {
         'product_id': 0,
@@ -59,15 +55,17 @@ products = [
 ]
 
 
+# Home page that contains information about owner of site.
 @app.route('/')
 def home():
-    """Render website's home page."""
     return render_template('home.html')
 
+# Page that displays all the products.
 @app.route('/products/')
 def get_products():
     return render_template('products.html', products=products)
 
+# Page that displays an individual product.
 @app.route('/products/<product_id>')
 def product_info(product_id):
     product_id = int(product_id)
@@ -77,10 +75,7 @@ def product_info(product_id):
             return render_template('product.html',product=product)
     else:
         return render_template('404.html')
-
-###
-# The functions below should be applicable to all Flask apps.
-###
+    
 
 # Display Flask WTF errors as Flash messages
 def flash_errors(form):
