@@ -68,7 +68,7 @@ def home():
 def get_products():
     return render_template('products.html', products=products)
 
-@app.route('/product/<product_id>')
+@app.route('/products/<product_id>')
 def product_info(product_id):
     product_id = int(product_id)
     for prod in products:
